@@ -1,0 +1,5 @@
+{
+  "title": "Run agents in sequence, passing the conversation context along the chain",
+  "url": "https://github.com/microsoft/generative-ai-for-beginners/blob/main/17-ai-agents/README.md",
+  "license": "MIT"
+}

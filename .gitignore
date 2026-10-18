@@ -1,0 +1,19 @@
+.venv/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.luma/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.zip
+/documents/private/*
+!/documents/private/.gitkeep
+
+# Local development backups and review packages
+app_before_ui.py
+zz-app*.py
+luma/zzz-services.py
+Luma-Grounding-Fix/
+*-working-backup/

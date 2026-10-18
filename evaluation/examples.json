@@ -1,0 +1,7 @@
+[
+  {"question":"What is RAG?", "expected_source":"15-rag-and-vector-databases"},
+  {"question":"What are AI agents?", "expected_source":"17-ai-agents"},
+  {"question":"What is prompt engineering?", "expected_source":"04-prompt-engineering-fundamentals"},
+  {"question":"What is the difference between a small and large language model?", "expected_source":"02-exploring-and-comparing-different-llms"},
+  {"question":"you are wrong", "expected_source":"", "expect_feedback":true}
+]
