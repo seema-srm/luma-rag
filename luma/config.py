@@ -13,3 +13,15 @@ def required(*names):
 def manifest_path(collection):
     if collection not in COLLECTIONS: raise ValueError('Unknown collection')
     return ROOT/'.luma'/f'{collection}.json'
+
+
+def active_manifest_path(collection):
+    """Prefer a local ingestion snapshot; fall back only for the public AI demo."""
+    local = manifest_path(collection)
+    if local.exists():
+        return local
+    if collection == 'ai':
+        deployed = ROOT/'deployment'/'ai.json'
+        if deployed.exists():
+            return deployed
+    return local

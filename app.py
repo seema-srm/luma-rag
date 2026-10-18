@@ -1,7 +1,7 @@
 """Luma's learning interface. Retrieval and answer generation live in luma.runtime."""
 import html
 import streamlit as st
-from luma.config import manifest_path
+from luma.config import active_manifest_path as manifest_path
 from luma.documents import load_documents
 from luma.graph import feedback_reply
 from luma.runtime import create_runtime, ask

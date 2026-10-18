@@ -1,29 +1,6 @@
-LUMA — CLEAN SUBMISSION COPY
+LUMA
 
-This folder is for preparing your GitHub submission. Keep your existing working
-luma-rag project and its private backup unchanged.
-
-WHAT CHANGED
-- README and Windows instructions describe the current AI-only interface.
-- .env.example has blank secrets and relevant settings.
-- The obsolete citation test now verifies the existing Sources footer.
-- 39 independent review checks were added (including two limitation probes).
-- Obsolete app copies and unused patch helpers were removed from this copy.
-- Active app/backend/ingestion code is identical to your reviewed upload.
-
-TEST RESULT
-51 passed: 49 functional checks and 2 characterization probes showing known
-limitations. See TEST-RESULTS.txt. No live provider calls or browser visual test.
-
-YOUR NEXT STEP
-Extract this ZIP to a new folder and use these clean contents for GitHub.
-Do not copy .env, .venv, .luma, private documents, or backups into that repository.
-To apply the documentation/test updates to your existing working project, copy
-README.md, SETUP-WINDOWS.md, .env.example, .gitignore, requirements-tested.txt,
-TEST-RESULTS.txt, and the tests folder only. Keep the real .env and .luma intact.
-Do not overwrite the whole working folder or rerun ingestion just for this update.
-
-HOSTING
-The hosted app is not deployed yet. Before deployment it needs privately
-configured keys plus a valid active snapshot manifest/index. Never submit a
-localhost address as your instructor's hosted demo link.
+See README.md for local setup and limitations.
+See DEPLOYMENT.md for Streamlit Community Cloud hosting.
+Keep actual keys private; deployment/secrets.example.toml is a template only.
+55 offline checks pass; no live hosting/provider verification has been performed.

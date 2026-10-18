@@ -112,6 +112,7 @@ def ui(monkeypatch,tmp_path):
     import luma.runtime as rt
     p=tmp_path/'manifest.json';p.write_text('{}')
     monkeypatch.setattr(cfg,'manifest_path',lambda c:p)
+    monkeypatch.setattr(cfg,'active_manifest_path',lambda c:p)
     monkeypatch.setattr(rt,'create_runtime',lambda c:'fake-graph')
     calls=[]
     def ask(*args):
@@ -233,3 +234,31 @@ def test_ingestion_success_creates_manifest_after_readable_writes(tmp_path,monke
     ingest.ingest('ai')
     data=json.loads(manifest.read_text())
     assert data['chunk_count']==1 and data['dimension']==2 and data['namespace'].startswith('luma-ai-')
+
+
+def test_hosted_ai_uses_public_snapshot_without_local_manifest(tmp_path,monkeypatch):
+    import luma.config as cfg
+    monkeypatch.setattr(cfg,'ROOT',tmp_path)
+    (tmp_path/'deployment').mkdir()
+    p=tmp_path/'deployment/ai.json';p.write_text('{}')
+    assert cfg.active_manifest_path('ai')==p
+
+def test_local_manifest_takes_priority_over_hosted_snapshot(tmp_path,monkeypatch):
+    import luma.config as cfg
+    monkeypatch.setattr(cfg,'ROOT',tmp_path)
+    (tmp_path/'deployment').mkdir();(tmp_path/'deployment/ai.json').write_text('{}')
+    (tmp_path/'.luma').mkdir();p=tmp_path/'.luma/ai.json';p.write_text('{}')
+    assert cfg.active_manifest_path('ai')==p
+
+def test_other_collections_do_not_use_public_hosted_snapshot(tmp_path,monkeypatch):
+    import luma.config as cfg
+    monkeypatch.setattr(cfg,'ROOT',tmp_path)
+    (tmp_path/'deployment').mkdir();(tmp_path/'deployment/ai.json').write_text('{}')
+    assert cfg.active_manifest_path('private')==tmp_path/'.luma/private.json'
+    assert cfg.active_manifest_path('sdet')==tmp_path/'.luma/sdet.json'
+
+def test_ingestion_target_stays_local_when_hosted_snapshot_exists(tmp_path,monkeypatch):
+    import luma.config as cfg
+    monkeypatch.setattr(cfg,'ROOT',tmp_path)
+    (tmp_path/'deployment').mkdir();(tmp_path/'deployment/ai.json').write_text('{}')
+    assert cfg.manifest_path('ai')==tmp_path/'.luma/ai.json'

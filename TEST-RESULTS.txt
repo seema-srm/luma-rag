@@ -1,8 +1,6 @@
-Cleaned submission regression: 2026-10-18
-51 checks: 49 functional checks plus 2 characterization probes demonstrating known limitations.
-Providers simulated; no live API calls or visual browser verification.
-Runtime code unchanged. The outdated inline-citation rejection case was replaced
-with a positive test of the existing Sources footer; invalid-ID tests retained.
-
-...................................................                      [100%]
-51 passed in 2.80s
+Hosting preparation verification: 2026-10-18
+55 passed (53 functional checks and 2 characterization probes showing limitations).
+Includes public demo snapshot fallback, local snapshot priority, private/SDET
+isolation from that fallback, and ingestion continuing to write local manifests.
+Providers simulated. Live hosted access and provider connectivity not verified.
+Restored answer-generation/retrieval behavior unchanged.

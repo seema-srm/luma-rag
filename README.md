@@ -57,9 +57,9 @@ Internal SDET sample documents and private-collection code remain for regression
 
 ## Verification
 
-The cleaned package passed **51 offline checks** on Linux/Python 3.12: **49 functional checks and 2 characterization probes documenting limitations**. This is not a claim of 51 answer-quality safeguards. Providers are simulated and no API keys are needed. See `TEST-RESULTS.txt`; `requirements-tested.txt` records installed versions and `requirements.txt` defines installation ranges.
+The cleaned package passed **55 offline checks** on Linux/Python 3.12: **53 functional checks and 2 characterization probes documenting limitations**. This is not a claim of 51 answer-quality safeguards. Providers are simulated and no API keys are needed. See `TEST-RESULTS.txt`; `requirements-tested.txt` records installed versions and `requirements.txt` defines installation ranges.
 
-Coverage includes document parsing, collection separation, feedback routing, follow-up context, explanation-style forwarding, citation validation, private tracing/upload guards, snapshot updates, failed-ingestion recovery, and Streamlit interface state/navigation. The stale missing-inline-citation test now checks the existing Sources-footer behavior. Application runtime code was unchanged during submission preparation.
+Coverage includes document parsing, collection separation, feedback routing, follow-up context, explanation-style forwarding, citation validation, private tracing/upload guards, snapshot updates, failed-ingestion recovery, and Streamlit interface state/navigation. The stale missing-inline-citation test now checks the existing Sources-footer behavior. The restored answer generation and retrieval logic is preserved. Hosting adds public AI snapshot fallback resolution, while a local ingestion manifest takes priority.
 
 Live Fireworks/Pinecone quality/connectivity, credits/model access, browser CSS, visible spinner animation, focus borders, scrolling, accessibility, and hosting were not verified by these offline tests.
 
@@ -77,9 +77,9 @@ With public AI data, deliberately set your LangSmith key and enable tracing, the
 
 ## Submission and hosting
 
-This package contains code, public documents, tests, and configuration templates. Real API keys, private documents, virtual environments, active `.luma` manifests, and obsolete code copies are excluded.
+This package contains code, public documents, tests, and configuration templates. Real API keys, private documents, virtual environments, local `.luma` manifests, and obsolete code copies are excluded. `deployment/ai.json` deliberately includes only the public-demo snapshot identifiers and dimensions; it has no credentials.
 
-GitHub provides source code; it does not make a localhost app available online. Hosting additionally requires server-side Fireworks/Pinecone credentials and an active AI snapshot manifest matching the remote index, namespace, embedding model, and dimension. Deployment is **not configured by this package**. Keep secrets private on the host. Once hosted correctly, visitors can use the app without their own keys, consuming the owner's provider credits.
+GitHub provides source code; it does not make a localhost app available online. The repository now includes the public AI snapshot reference at `deployment/ai.json`. Hosting still requires private server-side Fireworks/Pinecone credentials, an accessible matching remote index, and deployment through the host. The code is prepared for deployment but a live service has not been verified. See `DEPLOYMENT.md`. Keep secrets private on the host. Once hosted correctly, visitors can use the app without their own keys, consuming the owner's provider credits.
 
 Inspect staged files before committing. `.gitignore` excludes secrets, private document contents, generated manifests, caches, and backup patterns; it does not erase previously tracked files or Git history.
 
@@ -98,3 +98,5 @@ Inspect staged files before committing. `.gitignore` excludes secrets, private d
 | `evaluate.py` | Optional LangSmith evaluation |
 | `.env.example` | Configuration template with blank keys |
 | `tests/` | Offline functional tests and characterization probes |
+
+After re-indexing locally, update `deployment/ai.json` from the new public `.luma/ai.json` before redeploying. Never replace it with a private collection manifest. Changing the hosted embedding model requires compatible re-indexing.

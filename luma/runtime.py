@@ -1,6 +1,6 @@
 import json, os
 from langsmith import tracing_context
-from .config import manifest_path
+from .config import active_manifest_path as manifest_path
 from .services import embeddings, pinecone_client, vector_store, chat_model
 from .graph import build_graph
 

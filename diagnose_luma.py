@@ -3,7 +3,7 @@ import json
 import re
 from pathlib import Path
 import luma.runtime as runtime
-from luma.config import manifest_path
+from luma.config import active_manifest_path as manifest_path
 
 print('Luma response diagnostic (keys and raw model content are NOT printed)')
 print('Runtime file:', Path(runtime.__file__).name)
